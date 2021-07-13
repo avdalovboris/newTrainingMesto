@@ -39,10 +39,12 @@ const object = {
 
                       //дом edit profile
 const modalEditProfile = document.querySelector('#popupEditProfile')
+const modalEditProfileForm = modalEditProfile.querySelector('.popup__form')
 const btnOpenModalEditProfile = document.querySelector('.profile__edit')
 const btnCloseModalEditProfile = modalEditProfile.querySelector('.popup__close')
                       //дом add photo
 const modalAddPhoto = document.querySelector('#popupAddPhoto')
+const modalAddPhotoForm = modalAddPhoto.querySelector('.popup__form')
 const btnOpenModalAddPhoto = document.querySelector('.profile__add')
 const btnCloseModalAddPhoto = modalAddPhoto.querySelector('.popup__close')
                       
@@ -61,10 +63,10 @@ const nameNewPhotoName = modalAddPhoto.querySelector('#name-card')
 const nameNewPhotoSrc = modalAddPhoto.querySelector('#link')
 
 
-const validEditPofile = new FormValidator(object, modalEditProfile)
-const validateEdit = validEditPofile.enableValidation();
-const validAddPhoto = new FormValidator(object, modalAddPhoto)
-const validateAdd = validAddPhoto.enableValidation();
+const validEditPofile = new FormValidator(object, modalEditProfileForm)
+validEditPofile.enableValidation();
+const validAddPhoto = new FormValidator(object, modalAddPhotoForm)
+validAddPhoto.enableValidation();
 
 
                       //open and close popup
@@ -96,7 +98,6 @@ function openeModalEditProfile() {
   //  disabled: ['disabled', 'true'],
   //  buttonActive: 'popup__button_inactive',
   //})
-  validateEdit()
 }
 
 function closeModalEditProfile() {
@@ -120,7 +121,6 @@ function OpenModalAddPhoto() {
   //  disabled: ['disabled', 'true'],
   //  buttonActive: 'popup__button_inactive',
   //})
-  validateAdd()
 }
 
 function closeModalAddPhoto() {

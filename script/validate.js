@@ -74,9 +74,8 @@
 
 
 class FormValidator {
-  constructor(object, modal) {
-    this._modal = modal;
-    this._form = this._modal.querySelector(object.form);
+  constructor(object, formModal) {
+    this._formModal = formModal;
     this._input = object.input;
     this._inactiveButtonClass = object.buttonInActive;
     this._buttonDisabled = object.disabled;
@@ -87,20 +86,20 @@ class FormValidator {
   }
 
   enableValidation() {
-    this._modal.addEventListener('submit', (evt) => {
+    this._formModal.addEventListener('submit', (evt) => {
       evt.preventDefault()
     })
     this._setEventListeners()
   }
 
   _setEventListeners() {
-    this._inputList = Array.from(this._form.querySelectorAll(this._input))
-    this._buttonElement = this._modal.querySelector(this._formButton)
+    this._inputList = Array.from(this._formModal.querySelectorAll(this._input))
+    this._buttonElement = this._formModal.querySelector(this._formButton)
 
     this._toggleButtonState()
     this._inputList.forEach((inputElement) => {
-      inputElement.addEventListener('input', (evt) => {
-        this._isValid(evt)
+      inputElement.addEventListener('input', () => {
+        this._isValid()
         this._toggleButtonState()
       })
     })
